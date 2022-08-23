@@ -17,22 +17,6 @@ You can see an oline demo of this app on photo-app-1001.herokuapp.com.
 
 ## Other requirements
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- heroku addons:create sendgrid:starter
+    - From Heroku addons account you can go the SendGrid account: https://app.sendgrid.com/guide
+- 
