@@ -48,6 +48,8 @@ gem 'twitter-bootstrap-rails', '~> 5.0'
 
 gem 'font-awesome-rails'
 
+gem 'stripe'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
