@@ -1,11 +1,15 @@
+<script language="Javascript">
+  Stripe.setPublishableKey("<%= Rails.application.credentials.dig(:stripe, :public_key) %>")
+</script>
+
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-10">
     <h2 class="pb-4"><%= t('.sign_up') %></h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: "form", class: "cc_form"}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="mb-3">
+      <div class="row mb-3">
         <%= f.label :email, class: "form-label" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
@@ -26,7 +30,31 @@
         </div>
       </div>
 
-      <div class="mb-3">
+      <%= fields_for( :payment ) do |p| %>
+        <div class="row mb-4">
+          <div class="col-md-4 no-left-padding">
+            <%= p.label :card_number, 'Card Number', class: "form-label", data: { stripe: 'label'} %>
+            <%= p.text_field :card_number, class: "form-control", required: true, data: { stripe: 'number' } %>
+          </div>
+          <div class="col-md-3">
+            <%= p.label :card_cvv, 'Card CVV', class: "form-label", data: { stripe: 'label'} %>
+            <%= p.text_field :card_cvv, class: "form-control", required: true, data: { stripe: 'cvc' } %>
+          </div>
+          <div class="col-md-5">
+            <div class="col-md-4">
+              <%= p.label :card_expires, 'Card Expires', class: "form-label", data: { stripe: 'label'} %>
+            </div>
+            <div class="col-md-4">
+              <%= p.select :card_expires_month, options_for_select(Payment.month_options), { include_blank: 'Month'}, "data-stripe" => 'exp-month', class: "form-control", required: true %>
+            </div>
+            <div class="col-md-4">
+              <%= p.select :card_expires_year, options_for_select(Payment.year_options.push), { include_blank: 'Year'}, class: "form-control", data: { stripe: 'exp-year' }, required: true %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="mb-3 mt-4">
 	      <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
       </div>
     <% end %>

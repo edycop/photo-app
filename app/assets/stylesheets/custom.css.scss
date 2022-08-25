@@ -1,5 +1,10 @@
 @import "bootstrap";
 
+#page-content {
+  flex: 1 0 auto;
+  background-color: rgb(155, 133, 133);
+}
+
 .user-name {
   padding: 0 !important ;
   padding-left: 5px;
