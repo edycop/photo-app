@@ -41,6 +41,10 @@ gem 'bootsnap', require: false
 
 gem 'bootstrap', '~> 5.2'
 
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+gem 'mini_magick', '~> 4.11'
+gem 'fog', '~> 2.2'
+
 gem 'devise', '~> 4.8'
 gem 'devise-bootstrap5'
 gem 'devise-i18n'
