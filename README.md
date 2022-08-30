@@ -14,9 +14,15 @@ You can see an oline demo of this app on photo-app-1001.herokuapp.com.
 - font-awesome-rails: 4.7
 - pretty_rails_console: 0.1.1
 
-
 ## Other requirements
 
 - heroku addons:create sendgrid:starter
     - From Heroku addons account you can go the SendGrid account: https://app.sendgrid.com/guide
-- 
+- Sendgrid account
+  - sendgrid.com
+- AWS account to config S3 bucket
+  - s3.console.aws.com
+- Stripe account to test the payment
+  - dashboard.stripe.com/test/payments
+  - stripe.com/docs/testing
+
